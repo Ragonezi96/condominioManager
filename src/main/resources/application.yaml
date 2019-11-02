@@ -6,11 +6,22 @@ spring:
 
 spring:
   profiles: development
-
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgresql
+    name: condominio
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
 
 ---
 
 spring:
   profiles: production
-
+  datasource:
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
 
