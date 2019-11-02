@@ -10,10 +10,11 @@ data class Pessoa(
         val id : Long?,
 
         @Column(name = "nome")
-        var nome : String,
+        var nome : String?,
 
         @ManyToOne
         var apartamento : Apartamento?
 ) {
         constructor(nome: String) : this(nome = nome, apartamento = null, id = null)
+        constructor() : this(nome = null, apartamento =  null, id = null)
 }

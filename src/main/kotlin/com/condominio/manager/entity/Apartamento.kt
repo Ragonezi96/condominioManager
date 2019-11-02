@@ -7,13 +7,14 @@ import javax.persistence.*
 data class Apartamento(
         @Id
         @GeneratedValue(strategy=GenerationType.AUTO)
-        val id : Long?,
+        val id: Long?,
 
         @Column(name = "bloco")
-        var bloco : String,
+        var bloco: String?,
 
         @Column(name = "numero")
-        var numero : Int
+        var numero: Int?
 ) {
         constructor(bloco: String, numero: Int) : this(id = null, bloco = bloco, numero = numero)
+        constructor() : this(id = null, bloco = null, numero = null)
 }
