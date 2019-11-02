@@ -6,7 +6,7 @@ import javax.persistence.*
 @Entity
 data class Apartamento(
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
         val id : Long?,
 
         @Column(name = "bloco")
