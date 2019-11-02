@@ -6,8 +6,7 @@ import javax.persistence.*
 @Entity
 data class Apartamento(
         @Id
-        @SequenceGenerator(name="apartamento-sequence" , sequenceName="apartamento-sequence", initialValue=1)
-        @GeneratedValue(strategy=GenerationType.IDENTITY, generator = "apartamento-sequence")
+        @GeneratedValue(strategy=GenerationType.AUTO)
         val id : Long?,
 
         @Column(name = "bloco")
