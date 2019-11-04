@@ -2,13 +2,15 @@ package com.condominio.manager.service
 
 import com.condominio.manager.entity.Pessoa
 import com.condominio.manager.repository.PessoaRepository
+import org.springframework.context.annotation.Lazy
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class PessoaService (val pessoaRepository: PessoaRepository, val apartamentoService: ApartamentoService) {
+class PessoaService (val pessoaRepository: PessoaRepository,
+                     @Lazy val apartamentoService: ApartamentoService) {
 
     fun create(pessoa : Pessoa): Pessoa {
         return pessoaRepository.save(pessoa)
@@ -16,6 +18,10 @@ class PessoaService (val pessoaRepository: PessoaRepository, val apartamentoServ
 
     fun update(pessoa : Pessoa): Pessoa {
         return pessoaRepository.save(pessoa)
+    }
+
+    fun delete(pessoaId: Long) {
+        return pessoaRepository.deleteById(pessoaId)
     }
 
     fun findById(pesssoaId : Long): Optional<Pessoa> {
@@ -26,7 +32,7 @@ class PessoaService (val pessoaRepository: PessoaRepository, val apartamentoServ
         return pessoaRepository.findAll(pageable)
     }
 
-    fun addPessoaToApartamento(pessoaId : Long, apartamentoId : Long) {
+    fun addPessoaToApartamento(pessoaId : Long, apartamentoId : Long): Pessoa {
         val pessoa = findById(pessoaId)
         val apartamento = apartamentoService.findById(apartamentoId)
 
@@ -34,6 +40,8 @@ class PessoaService (val pessoaRepository: PessoaRepository, val apartamentoServ
             pessoa.get().apartamento = apartamento.get()
         }
 
-        update(pessoa.get())
+        return update(pessoa.get())
     }
+
+
 }
