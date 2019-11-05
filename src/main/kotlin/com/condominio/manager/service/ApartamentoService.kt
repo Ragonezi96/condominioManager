@@ -28,6 +28,10 @@ class ApartamentoService (val apartamentoRepository: ApartamentoRepository,
         return apartamentoRepository.deleteById(apartamentoId)
     }
 
+    fun getSumOfAllMetragens(): Long {
+        return apartamentoRepository.getSumOfAllMetragens()
+    }
+
     fun makePersonOwner(pessoaId : Long, apartamentoId: Long) {
         var apartamento = apartamentoRepository.findById(apartamentoId)
         val pessoa =  pessoaService.findById(pessoaId)

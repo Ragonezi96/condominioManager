@@ -7,18 +7,14 @@ import javax.persistence.*
 data class Pessoa(
         @Id
         @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "sequenceperson")
-        val id : Long?,
+        val id : Long? = null ,
 
         @Column(name = "nome")
-        var nome : String?,
+        var nome : String? = null,
 
         @Column(name = "email")
-        var email : String?,
+        var email : String? = null,
 
         @ManyToOne
-        var apartamento : Apartamento?
-) {
-        constructor(nome: String) : this(nome = nome, email = null, apartamento = null, id = null)
-        constructor(nome: String, email: String) : this(nome = nome, email = email, apartamento = null, id = null)
-        constructor() : this(nome = null, email = null, apartamento =  null, id = null)
-}
+        var apartamento : Apartamento? = null
+)

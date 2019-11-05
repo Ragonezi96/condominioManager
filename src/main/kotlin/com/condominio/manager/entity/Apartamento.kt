@@ -8,17 +8,17 @@ import javax.persistence.*
 data class Apartamento(
         @Id
         @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "sequenceapartment")
-        val id: Long?,
+        val id: Long? = null,
 
         @Column(name = "bloco")
-        var bloco: String?,
+        var bloco: String? = null,
 
         @Column(name = "numero")
-        var numero: Int?,
+        var numero: Int? = null,
+
+        @Column(name = "metragem")
+        var metragem : Long? = null,
 
         @ManyToOne
-        var owner: Pessoa?
-) {
-        constructor(bloco: String, numero: Int) : this(id = null, bloco = bloco, numero = numero, owner = null)
-        constructor() : this(id = null, bloco = null, numero = null, owner = null)
-}
+        var owner: Pessoa? = null
+)
