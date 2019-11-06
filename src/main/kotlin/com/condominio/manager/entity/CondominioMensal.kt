@@ -4,6 +4,7 @@ import com.condominio.manager.utils.converter.MonetaryAmountConverter
 import javax.money.MonetaryAmount
 import javax.persistence.*
 
+@Table(uniqueConstraints = [UniqueConstraint(columnNames = ["mes", "ano"])])
 @Entity
 @SequenceGenerator(name = "sequencecondominiomensal", sequenceName = "sequence_condominio_mensal", initialValue = 1 , allocationSize = 1)
 data class CondominioMensal(
